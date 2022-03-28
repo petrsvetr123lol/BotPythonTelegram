@@ -13,14 +13,23 @@ while True:
     doc = BeautifulSoup(result.text, "html.parser")
 
     commit1 = doc.find(class_="Link--primary text-bold js-navigation-open markdown-title", href=True)
-    print(commit1)
-    print(commit2)
 
+    print(commit1)
     if commit1 != commit2:
         requests.post(
             'https://api.telegram.org/bot5112690824:AAEwjrjQAxJtaWwyFDUa10pzltRBOAOqwS4/sendMessage?chat_id'
             '=-604401103', data={
-                'text': commit1
+                'text': 'Commited in'
+            }).json()
+        requests.post(
+            'https://api.telegram.org/bot5112690824:AAEwjrjQAxJtaWwyFDUa10pzltRBOAOqwS4/sendMessage?chat_id'
+            '=-604401103', data={
+                'text': url,
+            }).json()
+        requests.post(
+            'https://api.telegram.org/bot5112690824:AAEwjrjQAxJtaWwyFDUa10pzltRBOAOqwS4/sendMessage?chat_id'
+            '=-604401103', data={
+                'text': commit1,
             }).json()
         commit2 = commit1
     else:
