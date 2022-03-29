@@ -12,13 +12,11 @@ while True:
     result = requests.get(url)
     doc = BeautifulSoup(result.text, "html.parser")
 
-    commit1 = doc.find_all("a", "href", class_="Link--primary text-bold js-navigation-open markdown-title", href=True)
-
     links = []
     for link in doc.find_all('a', class_="Link--primary text-bold js-navigation-open markdown-title", href=True):
         links.append(link['href'])
-        send = links[0]
-        github_url = "https://github.com" + send
+        commit1 = links[0]
+        github_url = "https://github.com" + commit1
     print(github_url)
 
     if commit1 != commit2:
