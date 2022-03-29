@@ -1,7 +1,8 @@
 from bs4 import BeautifulSoup
 import requests
-import time
+import logging
 
+logging.basicConfig(filename="bot.log", level=logging.INFO)
 commit1 = "zero"
 commit2 = ""
 github_url = ""
@@ -31,6 +32,7 @@ while True:
                 'text': github_url,
             }).json()
         commit2 = commit1
+        logging.info("Commit has been sent to the chat")
     ###else - commit was sent
     """
     else:
